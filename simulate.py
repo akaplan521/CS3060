@@ -15,8 +15,8 @@ robotId = p.loadURDF("body.urdf")
 p.loadSDF("world.sdf")
 pyrosim.Prepare_To_Simulate(robotId)
 
-backLegSensorValues = numpy.zeros(500)
-frontLegSensorValues = numpy.zeros(500)
+backLegSensorValues = numpy.zeros(5000)
+frontLegSensorValues = numpy.zeros(5000)
 
 for i in range(5000):
     p.stepSimulation()
@@ -25,7 +25,12 @@ for i in range(5000):
     pyrosim.Set_Motor_For_Joint(bodyIndex = robotId, 
                                 jointName = "Torso_BackLeg", 
                                 controlMode = p.POSITION_CONTROL, 
-                                targetPosition = 0.0, 
+                                targetPosition = -numpy.pi/6.0, 
+                                maxForce = 500)
+    pyrosim.Set_Motor_For_Joint(bodyIndex = robotId, 
+                                jointName = "Torso_FrontLeg", 
+                                controlMode = p.POSITION_CONTROL, 
+                                targetPosition = numpy.pi/6.0, 
                                 maxForce = 500)
     time.sleep(1/60)
 
