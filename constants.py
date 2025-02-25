@@ -3,7 +3,7 @@ import numpy
 ITERATIONS = 2000
 
 backAmplitude = numpy.pi/5
-backFrequency = 0
+backFrequency = 20
 backPhaseOffset = 0
 
 frontAmplitude = numpy.pi/4

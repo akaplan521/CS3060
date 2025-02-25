@@ -12,7 +12,14 @@ class MOTOR:
 
     def Prepare_To_Act(self):
         self.amplitude = c.backAmplitude  
-        self.frequency = c.backFrequency
+        
+        # using joint index to make the even numbered joints move at twice speed as odd ones
+        self.jointIndex = pyrosim.jointNamesToIndices[self.jointName]
+        if self.jointIndex % 2 == 0:  
+            self.frequency = c.backFrequency
+        else:  
+            self.frequency = c.backFrequency * 0.5 
+
         self.offset = c.backPhaseOffset 
 
         self.motorValues = self.amplitude * numpy.sin(self.frequency * numpy.linspace(0, 2 * numpy.pi, c.ITERATIONS) + self.offset)
