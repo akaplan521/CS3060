@@ -27,21 +27,7 @@
 # BackLegControl = c.backAmplitude * numpy.sin(c.backFrequency * targetAngles + c.backPhaseOffset)
 # FrontLegControl = c.frontAmplitude * numpy.sin(c.frontFrequency * targetAngles + c.frontPhaseOffset)
 
-# for i in range(c.ITERATIONS):
-#     p.stepSimulation()
-#     backLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("BackLeg")
-#     frontLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("FrontLeg")
-#     pyrosim.Set_Motor_For_Joint(bodyIndex = robotId, 
-#                                 jointName = "Torso_BackLeg", 
-#                                 controlMode = p.POSITION_CONTROL, 
-#                                 targetPosition = BackLegControl[i], 
-#                                 maxForce = c.motorForce)
-#     pyrosim.Set_Motor_For_Joint(bodyIndex = robotId, 
-#                                 jointName = "Torso_FrontLeg", 
-#                                 controlMode = p.POSITION_CONTROL, 
-#                                 targetPosition = FrontLegControl[i], 
-#                                 maxForce = c.motorForce)
-#     time.sleep(c.sleepTime)
+
 
 # numpy.save('data/sensor.npy', backLegSensorValues)
 # numpy.save('data/frontLegSensorValues.npy', frontLegSensorValues)
@@ -50,3 +36,4 @@
 from simulation import SIMULATION
 
 simulation = SIMULATION()
+SIMULATION.run()

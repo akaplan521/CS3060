@@ -11,6 +11,7 @@ frontFrequency = 10 * numpy.pi
 frontPhaseOffset = numpy.pi / 2
 
 motorForce = 20
+gravity = -9.8
 
 sleepTime = 1/60
 
