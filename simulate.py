@@ -36,4 +36,4 @@
 from simulation import SIMULATION
 
 simulation = SIMULATION()
-SIMULATION.run()
+simulation.run()

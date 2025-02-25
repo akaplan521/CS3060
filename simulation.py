@@ -10,7 +10,6 @@ import pyrosim.pyrosim as pyrosim
 class SIMULATION:
     
     def __init__(self):
-        
         self.physicsClient = p.connect(p.GUI)
         p.setAdditionalSearchPath(pybullet_data.getDataPath())
         p.setGravity(0, 0, -9.8)
@@ -29,12 +28,12 @@ class SIMULATION:
         self.FrontLegControl = c.frontAmplitude * numpy.sin(c.frontFrequency * self.targetAngles + c.frontPhaseOffset)
 
 
-    def run():
+    def run(self):
         for i in range(c.ITERATIONS):
-            print(i)
+            # print(i)
             p.stepSimulation()
-            # backLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("BackLeg")
-            # frontLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("FrontLeg")
+            self.robot.Sense(i)
+            
             # pyrosim.Set_Motor_For_Joint(bodyIndex = robotId, 
             #                             jointName = "Torso_BackLeg", 
             #                             controlMode = p.POSITION_CONTROL, 
@@ -46,3 +45,6 @@ class SIMULATION:
             #                             targetPosition = FrontLegControl[i], 
             #                             maxForce = c.motorForce)
             time.sleep(c.sleepTime)
+
+    def __del__(self):
+        p.disconnect()
