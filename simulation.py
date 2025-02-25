@@ -33,18 +33,9 @@ class SIMULATION:
             # print(i)
             p.stepSimulation()
             self.robot.Sense(i)
-            
-            # pyrosim.Set_Motor_For_Joint(bodyIndex = robotId, 
-            #                             jointName = "Torso_BackLeg", 
-            #                             controlMode = p.POSITION_CONTROL, 
-            #                             targetPosition = BackLegControl[i], 
-            #                             maxForce = c.motorForce)
-            # pyrosim.Set_Motor_For_Joint(bodyIndex = robotId, 
-            #                             jointName = "Torso_FrontLeg", 
-            #                             controlMode = p.POSITION_CONTROL, 
-            #                             targetPosition = FrontLegControl[i], 
-            #                             maxForce = c.motorForce)
+            self.robot.Act(i)
             time.sleep(c.sleepTime)
 
     def __del__(self):
+        #save sensor and motor values here if wanted
         p.disconnect()
