@@ -9,8 +9,7 @@ class SENSOR:
 
     def Get_Value(self, t):  
         self.values[t] = pyrosim.Get_Touch_Sensor_Value_For_Link(self.linkName)
-        if t == c.ITERATIONS - 1:
-            print(f"{self.linkName} Sensor Values:", self.values)
+        
 
     def Save_Values(self):
         numpy.save(f"data/{self.linkName}_sensor.npy", self.values)
