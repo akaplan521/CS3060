@@ -37,6 +37,9 @@ class SIMULATION:
             self.robot.Act(i)
             time.sleep(c.sleepTime)
 
+    def Get_Fitness(self):
+        self.robot.Get_Fitness()
+
     def __del__(self):
         #save sensor and motor values here if wanted
         p.disconnect()
