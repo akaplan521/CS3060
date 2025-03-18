@@ -15,3 +15,4 @@ gravity = -9.8
 
 sleepTime = 1/60
 
+numberOfGenerations = 2
