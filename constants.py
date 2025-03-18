@@ -1,6 +1,6 @@
 import numpy
 
-ITERATIONS = 1000
+ITERATIONS = 200
 
 backAmplitude = numpy.pi/5
 backFrequency = 20
