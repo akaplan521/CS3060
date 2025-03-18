@@ -1,6 +1,6 @@
 import numpy
 
-ITERATIONS = 200
+ITERATIONS = 500
 
 backAmplitude = numpy.pi/5
 backFrequency = 20
@@ -15,4 +15,4 @@ gravity = -9.8
 
 sleepTime = 1/60
 
-numberOfGenerations = 2
+numberOfGenerations = 10
