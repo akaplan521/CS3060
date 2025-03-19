@@ -3,6 +3,7 @@ from motor import MOTOR
 import pybullet as p
 import pyrosim.pyrosim as pyrosim
 from pyrosim.neuralNetwork import NEURAL_NETWORK
+import os
 
 class ROBOT:
 
@@ -15,6 +16,8 @@ class ROBOT:
 
         self.Prepare_To_Sense()
         self.Prepare_To_Act()
+
+        os.system("del brain" + str(solutionID) + ".nndf")
 
     def Prepare_To_Sense(self):
         self.sensors = {}
