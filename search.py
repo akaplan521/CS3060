@@ -1,5 +1,6 @@
 import os
 from parallelHillClimber import PARALLEL_HILL_CLIMBER
+import constants as c
 
 # for _ in range(5):
 #     os.system("python generate.py")

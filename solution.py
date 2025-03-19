@@ -2,6 +2,7 @@ import numpy as np
 import pyrosim.pyrosim as pyrosim
 import os
 import random
+import time
 
 class SOLUTION:
     
@@ -20,8 +21,12 @@ class SOLUTION:
         
         os.system("start /B python simulate.py " + mode + " " + str(self.myID))
 
-        with open("fitness.txt", "r") as fitnessFile:
+        while not os.path.exists("fitness" + str(self.myID) + ".txt"):
+            time.sleep(0.01)
+            
+        with open("fitness" + str(self.myID) + ".txt", "r") as fitnessFile:
            self.fitness = float(fitnessFile.read().strip())
+           print(self.fitness)
 
 
     def Create_World(self):

@@ -46,7 +46,7 @@ class SIMULATION:
                 time.sleep(c.sleepTime)
 
     def Get_Fitness(self):
-        self.robot.Get_Fitness()
+        self.robot.Get_Fitness(self.solutionID)
 
     def __del__(self):
         #save sensor and motor values here if wanted

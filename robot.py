@@ -17,7 +17,7 @@ class ROBOT:
         self.Prepare_To_Sense()
         self.Prepare_To_Act()
 
-        os.system("del brain" + str(solutionID) + ".nndf")
+        #os.system("del brain" + str(solutionID) + ".nndf")
 
     def Prepare_To_Sense(self):
         self.sensors = {}
@@ -45,11 +45,11 @@ class ROBOT:
         self.nn.Update()
         self.nn.Print()
        
-    def Get_Fitness(self):
+    def Get_Fitness(self, solutionID):
         stateOfLinkZero = p.getLinkState(self.robotId, 0)  
         positionOfLinkZero = stateOfLinkZero[0]  
         xCoordinateOfLinkZero = positionOfLinkZero[0]  
 
-        with open("fitness.txt", "w") as file:  
+        with open("fitness" + solutionID + ".txt", "w") as file:  
             file.write(str(xCoordinateOfLinkZero))
         
