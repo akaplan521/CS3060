@@ -14,20 +14,29 @@ class SOLUTION:
 
     
     def Evaluate(self, mode="DIRECT"):
-        self.Create_World()
-        self.Generate_Body()
-        self.Generate_Brain()
-
         
-        os.system("start /B python simulate.py " + mode + " " + str(self.myID))
 
         while not os.path.exists("fitness" + str(self.myID) + ".txt"):
             time.sleep(0.01)
-            
+
         with open("fitness" + str(self.myID) + ".txt", "r") as fitnessFile:
            self.fitness = float(fitnessFile.read().strip())
            print(self.fitness)
 
+    def Start_Simulation(self, mode="DIRECT"):
+        self.Create_World()
+        self.Generate_Body()
+        self.Generate_Brain()
+
+        os.system("start /B python simulate.py " + mode + " " + str(self.myID))
+
+    def Wait_For_Simulation_To_End(self):
+        while not os.path.exists("fitness" + str(self.myID) + ".txt"):
+            time.sleep(0.01)
+
+        with open("fitness" + str(self.myID) + ".txt", "r") as fitnessFile:
+           self.fitness = float(fitnessFile.read().strip())
+           print(self.fitness)
 
     def Create_World(self):
         pyrosim.Start_SDF("world.sdf")
