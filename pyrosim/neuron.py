@@ -57,7 +57,7 @@ class NEURON:
         # self.Print_Name()
 
         # self.Print_Type()
-
+        
         self.Print_Value()
 
         # print("")
