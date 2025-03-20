@@ -14,12 +14,15 @@ phc.Show_Best()
 
 time.sleep(2)
 
+    
 for i in range(c.populationSize):
-    brain_filename = f"brain{i}.nndf"
-    fitness_filename = f"fitness{i}.txt"
-    if os.path.exists(brain_filename):
-        os.remove(brain_filename)
-        print(f"Deleted {brain_filename}")
-    if os.path.exists(fitness_filename):
-        os.remove(fitness_filename)
-        print(f"Deleted {fitness_filename}")
+     brain_filename = f"brain{i}.nndf"
+     fitness_filename = f"fitness{i}.txt"
+     if os.path.exists(brain_filename):
+         os.remove(brain_filename)
+         print(f"Deleted {brain_filename}")
+     if os.path.exists(fitness_filename):
+         os.remove(fitness_filename)
+         print(f"Deleted {fitness_filename}")
+
+print("program done")   

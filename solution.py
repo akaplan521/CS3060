@@ -36,7 +36,7 @@ class SOLUTION:
 
         with open("fitness" + str(self.myID) + ".txt", "r") as fitnessFile:
            self.fitness = float(fitnessFile.read().strip())
-           print(self.fitness)
+           #print(self.fitness)
 
     def Create_World(self):
         pyrosim.Start_SDF("world.sdf")
@@ -69,3 +69,6 @@ class SOLUTION:
     def Mutate(self):
         randomRow,randomColumn = random.randint(0,2), random.randint(0,1)
         self.weights[randomRow,randomColumn] = random.random() * 2 - 1
+
+    def Set_ID(self, newID):
+        self.myID = newID
