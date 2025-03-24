@@ -15,5 +15,8 @@ gravity = -9.8
 
 sleepTime = 1/60
 
-numberOfGenerations = 10
-populationSize = 10
+numberOfGenerations = 1
+populationSize = 1
+
+numSensorNeurons = 3
+numMotorNeurons = 2
