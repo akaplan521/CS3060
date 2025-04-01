@@ -19,8 +19,13 @@ class SIMULATION:
         p.setAdditionalSearchPath(pybullet_data.getDataPath())
         p.setGravity(0, 0, -9.8)
 
-        self.world = WORLD()
-        self.robot = ROBOT(solutionID)
+        p.loadSDF("world.sdf")   #adding to debug cant load urdf error
+        self.planeId = p.loadURDF("plane.urdf") #adding to debug cant load urdf error
+
+        #self.world = WORLD() trying to fix urdf file error 
+        #self.robot = ROBOT(solutionID)
+        self.robot = ROBOT(solutionID, bodyFile=f"body{solutionID}.urdf")
+        self.world = WORLD(worldFile=f"world{solutionID}.sdf")
 
         pyrosim.Prepare_To_Simulate(self.robot.robotId)
 

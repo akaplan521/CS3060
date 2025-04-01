@@ -47,13 +47,13 @@ class SOLUTION:
         fitnessFile.close()
 
     def Create_World(self):
-        pyrosim.Start_SDF("world.sdf")
+        pyrosim.Start_SDF(f"world{self.myID}.sdf")
         pyrosim.Send_Cube(name="Box", pos=[-5,0,.5] , size=[1,1,1])
         pyrosim.End()
         time.sleep(0.05)
 
     def Generate_Body(self):
-        pyrosim.Start_URDF("body.urdf")
+        pyrosim.Start_URDF(f"body{self.myID}.urdf")
         pyrosim.Send_Cube(name="Torso", pos=[0,0,1] , size=[1,1,1])
         pyrosim.Send_Joint( name = "Torso_BackLeg" , parent= "Torso" , child = "BackLeg" , 
                            type = "revolute", position = [0,-.5,1], jointAxis = "1 0 0")

@@ -8,8 +8,8 @@ import constants as c
 
 class ROBOT:
 
-    def __init__(self, solutionID):
-        self.robotId = p.loadURDF("body.urdf")
+    def __init__(self, solutionID, bodyFile):
+        self.robotId = p.loadURDF(bodyFile)
         
         self.motors = {}
         self.nn = NEURAL_NETWORK("brain" + str(solutionID) + ".nndf")
@@ -47,12 +47,12 @@ class ROBOT:
         self.nn.Print()
        
     def Get_Fitness(self, solutionID):
-        stateOfLinkZero = p.getLinkState(self.robotId, 0)  
-        positionOfLinkZero = stateOfLinkZero[0]  
-        xCoordinateOfLinkZero = positionOfLinkZero[0]  
+        basePositionAndOrientation = p.getBasePositionAndOrientation(self.robotId)  
+        basePosition = basePositionAndOrientation[0]  
+        xPosition = basePosition[0]  
 
         with open("tmp" + solutionID + ".txt", "w") as file:  
-            file.write(str(xCoordinateOfLinkZero))
+            file.write(str(xPosition))
         
         os.rename("tmp" + str(solutionID) + ".txt" , "fitness" + str(solutionID) + ".txt")
         
