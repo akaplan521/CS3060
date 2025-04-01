@@ -10,6 +10,8 @@ import pyrosim.pyrosim as pyrosim
 class SIMULATION:
     
     def __init__(self, directOrGUI, solutionID):
+        self.movingTimesteps = 0
+
         self.directOrGUI = directOrGUI
         if self.directOrGUI == "DIRECT":
             self.physicsClient = p.connect(p.DIRECT)
@@ -45,10 +47,20 @@ class SIMULATION:
             self.robot.Sense(i)
             self.robot.Think(i)
             self.robot.Act(i)
+
+            velocity = p.getBaseVelocity(self.robot.robotId)[0]
+
+            speed = numpy.linalg.norm(velocity)
+
+            if speed > c.movementThreshold:
+                self.movingTimesteps += 1
+
             if self.directOrGUI == "GUI":
                 time.sleep(0.01)
             else:
                 time.sleep(c.sleepTime)
+
+        print(f"\nMoving timesteps: {self.movingTimesteps} / {c.ITERATIONS} \nPercent Moving timesteps {self.movingTimesteps / c.ITERATIONS}")
 
     def Get_Fitness(self):
         self.robot.Get_Fitness(self.solutionID)
