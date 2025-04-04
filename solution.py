@@ -48,7 +48,7 @@ class SOLUTION:
 
     def Create_World(self):
         pyrosim.Start_SDF(f"world{self.myID}.sdf")
-        pyrosim.Send_Cube(name="Box", pos=[-5,0,.5] , size=[1,1,1])
+        #pyrosim.Send_Cube(name="Box", pos=[-5,0,.5] , size=[1,1,1])
         pyrosim.End()
         time.sleep(0.05)
 
@@ -63,7 +63,7 @@ class SOLUTION:
         pyrosim.Send_Cube(name="FrontLeg", pos=[0,.5,0] , size=[.2,1,.2])
         pyrosim.Send_Joint( name = "Torso_LeftLeg" , parent= "Torso" , child = "LeftLeg" , 
                            type = "revolute", position = [.5,0,1], jointAxis = "0 1 0")
-        pyrosim.Send_Cube(name="LeftLeg", pos=[.5,0,0] , size=[1,.2,.2])
+        pyrosim.Send_Cube(name="LeftLeg", pos=[.5,0,0] , size=[1,.2,.2]) 
         pyrosim.Send_Joint( name = "Torso_RightLeg" , parent= "Torso" , child = "RightLeg" , 
                            type = "revolute", position = [-.5,0,1], jointAxis = "0 1 0")
         pyrosim.Send_Cube(name="RightLeg", pos=[-.5,0,0] , size=[1,.2,.2])
@@ -75,10 +75,10 @@ class SOLUTION:
                            type = "revolute", position = [0,-1,0], jointAxis = "1 0 0")
         pyrosim.Send_Cube(name="BackLowerLeg", pos=[0,0,-.5] , size=[.2,.2,1])
         pyrosim.Send_Joint( name = "RightLeg_RightLowerLeg" , parent= "RightLeg" , child = "RightLowerLeg" , 
-                           type = "revolute", position = [-1,0,0], jointAxis = "1 0 0")
+                           type = "revolute", position = [-1,0,0], jointAxis = "0 1 0")
         pyrosim.Send_Cube(name="RightLowerLeg", pos=[0,0,-.5] , size=[.2,.2,1])
         pyrosim.Send_Joint( name = "LeftLeg_LeftLowerLeg" , parent= "LeftLeg" , child = "LeftLowerLeg" , 
-                           type = "revolute", position = [1,0,0], jointAxis = "1 0 0")
+                           type = "revolute", position = [1,0,0], jointAxis = "0 1 0")
         pyrosim.Send_Cube(name="LeftLowerLeg", pos=[0,0,-.5] , size=[.2,.2,1])
         pyrosim.End()
         
@@ -117,8 +117,8 @@ class SOLUTION:
     def Set_ID(self, newID):
         self.myID = newID
 
-# if __name__ == "__main__":
-#     s = SOLUTION(0)
-#     s.Create_World()
-#     s.Generate_Body()
-#     s.Generate_Brain()
+if __name__ == "__main__":
+    s = SOLUTION(0)
+    s.Create_World()
+    s.Generate_Body()
+    s.Generate_Brain()
