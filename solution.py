@@ -117,8 +117,8 @@ class SOLUTION:
     def Set_ID(self, newID):
         self.myID = newID
 
-if __name__ == "__main__":
-    s = SOLUTION(0)
-    s.Create_World()
-    s.Generate_Body()
-    s.Generate_Brain()
+# if __name__ == "__main__":
+#     s = SOLUTION(0)
+#     s.Create_World()
+#     s.Generate_Body()
+#     s.Generate_Brain()
