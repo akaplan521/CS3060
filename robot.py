@@ -48,13 +48,18 @@ class ROBOT:
         self.nn.Update()
         self.nn.Print()
        
-    def Get_Fitness(self, solutionID):
+    def Get_Fitness(self, solutionID, movingTimesteps):
         basePositionAndOrientation = p.getBasePositionAndOrientation(self.robotId)  
         basePosition = basePositionAndOrientation[0]  
         xPosition = basePosition[0]  
-        
+
+        movement_ratio = movingTimesteps / c.ITERATIONS
+        combined_fitness = xPosition * movement_ratio
+        print(f"og fitness: {xPosition:.4f}")
+        print(f"combined fitness: {combined_fitness:.4f}")
+              
         with open("tmp" + solutionID + ".txt", "w") as file:  
-            file.write(str(xPosition))
+            file.write(str(combined_fitness))
         
         os.rename("tmp" + str(solutionID) + ".txt" , "fitness" + str(solutionID) + ".txt")
         

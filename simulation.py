@@ -63,7 +63,7 @@ class SIMULATION:
         #print(f"\nMoving timesteps: {self.movingTimesteps} / {c.ITERATIONS} \nPercent Moving timesteps {self.movingTimesteps / c.ITERATIONS}")
     
     def Get_Fitness(self):
-        self.robot.Get_Fitness(self.solutionID)
+        self.robot.Get_Fitness(self.solutionID, self.movingTimesteps)
 
     def __del__(self):
         #save sensor and motor values here if wanted
