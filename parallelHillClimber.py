@@ -75,4 +75,6 @@ class PARALLEL_HILL_CLIMBER:
                 best_fitness = self.parents[key].fitness
                 best_key = key
 
+        self.parents[best_key].Generate_Brain()
         self.parents[best_key].Start_Simulation("GUI")
+        self.parents[best_key].Wait_For_Simulation_To_End()

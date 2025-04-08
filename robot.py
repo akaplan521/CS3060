@@ -34,11 +34,13 @@ class ROBOT:
         for sensor in self.sensors.values():  
             sensor.Get_Value(t)
 
-    def Act(self, desiredAngle):
+    def Act(self, t):
         for neuronName in self.nn.Get_Neuron_Names():
             if self.nn.Is_Motor_Neuron(neuronName):
                 jointName = self.nn.Get_Motor_Neurons_Joint(neuronName)
                 desiredAngle = self.nn.Get_Value_Of(neuronName) * c.motorJointRange
+                if t > c.ITERATIONS - 3:
+                    print(f"[{t}] Acting on joint: {jointName}, angle: {desiredAngle:.4f}")
                 self.motors[jointName].Set_Value(self.robotId, desiredAngle)
             
     
@@ -50,7 +52,7 @@ class ROBOT:
         basePositionAndOrientation = p.getBasePositionAndOrientation(self.robotId)  
         basePosition = basePositionAndOrientation[0]  
         xPosition = basePosition[0]  
-
+        
         with open("tmp" + solutionID + ".txt", "w") as file:  
             file.write(str(xPosition))
         

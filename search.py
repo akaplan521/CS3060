@@ -21,7 +21,7 @@ phc.Evolve()
 phc.Show_Best()
 
 
-time.sleep(2)
+time.sleep(5)
 
     
 for i in range(c.populationSize * c.numberOfGenerations * 2):

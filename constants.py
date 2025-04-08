@@ -1,6 +1,6 @@
 import numpy
 
-ITERATIONS = 800
+ITERATIONS = 2000
 
 backAmplitude = numpy.pi/5
 backFrequency = 20
@@ -23,4 +23,4 @@ numMotorNeurons = 8
 
 motorJointRange = 0.2
 
-movementThreshold = 0.1
+movementThreshold = 0.1 # for final project velocity variable

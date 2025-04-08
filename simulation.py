@@ -60,8 +60,8 @@ class SIMULATION:
             else:
                 time.sleep(c.sleepTime)
 
-        print(f"\nMoving timesteps: {self.movingTimesteps} / {c.ITERATIONS} \nPercent Moving timesteps {self.movingTimesteps / c.ITERATIONS}")
-
+        #print(f"\nMoving timesteps: {self.movingTimesteps} / {c.ITERATIONS} \nPercent Moving timesteps {self.movingTimesteps / c.ITERATIONS}")
+    
     def Get_Fitness(self):
         self.robot.Get_Fitness(self.solutionID)
 

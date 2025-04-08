@@ -12,5 +12,6 @@ simulation = SIMULATION(directOrGUI, solutionID)
 simulation.run()
 simulation.Get_Fitness()
 
+
 os.remove(f"body{solutionID}.urdf")
 os.remove(f"world{solutionID}.sdf")
