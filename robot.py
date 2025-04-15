@@ -54,9 +54,19 @@ class ROBOT:
         xPosition = basePosition[0]  
 
         movement_ratio = movingTimesteps / c.ITERATIONS
-        combined_fitness = xPosition * movement_ratio
-        print(f"og fitness: {xPosition:.4f}")
-        print(f"combined fitness: {combined_fitness:.4f}")
+        #combined_fitness = xPosition * movement_ratio
+        
+        if c.fitnessVariants == 0:
+            combined_fitness = xPosition
+        elif c.fitnessVariants == 1:
+            combined_fitness = xPosition * movement_ratio
+        elif c.fitnessVariants == 2:
+            combined_fitness = xPosition * (movement_ratio ** 2)
+        elif c.fitnessVariants == 3:
+            combined_fitness = 0.5 * xPosition + 0.5 * movement_ratio
+        elif c.fitnessVariants == 4:
+            k = 2  #can change this constant
+            combined_fitness = xPosition - k * (1 - movement_ratio)
               
         with open("tmp" + solutionID + ".txt", "w") as file:  
             file.write(str(combined_fitness))
