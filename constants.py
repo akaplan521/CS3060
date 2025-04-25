@@ -15,8 +15,8 @@ gravity = -9.8
 
 sleepTime = 1/60
 
-numberOfGenerations = 10
-populationSize = 10
+numberOfGenerations = 7
+populationSize = 7
 
 numSensorNeurons = 9
 numMotorNeurons = 8
@@ -25,4 +25,4 @@ motorJointRange = 0.2
 
 movementThreshold = 0.1 # for final project velocity variable
 
-fitnessVariants = 0 
+fitnessVariants = 0

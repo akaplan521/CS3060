@@ -2,7 +2,8 @@ from solution import SOLUTION
 import constants as c
 import copy
 import os
-
+import time
+import csv
 class PARALLEL_HILL_CLIMBER:
     
     def __init__(self):
@@ -67,6 +68,7 @@ class PARALLEL_HILL_CLIMBER:
         for i in solutions:
             solutions[i].Wait_For_Simulation_To_End()
     def Show_Best(self):
+
         best_key = None
         best_fitness = 1000
 
@@ -76,5 +78,16 @@ class PARALLEL_HILL_CLIMBER:
                 best_key = key
 
         self.parents[best_key].Generate_Brain()
-        self.parents[best_key].Start_Simulation("GUI")
+        self.parents[best_key].Start_Simulation("DIRECT")
         self.parents[best_key].Wait_For_Simulation_To_End()
+
+        if not os.path.exists("results.csv"):
+            with open("results.csv", "w", newline="") as file:
+                writer = csv.writer(file)
+                writer.writerow(["Variant", "TrialID", "Distance", "Movement Ratio", "Fitness"])
+        with open("results.csv", "a", newline="") as file:
+            writer = csv.writer(file)
+            writer.writerow([c.fitnessVariants, best_key,
+                            self.parents[best_key].distance,
+                            self.parents[best_key].movement_ratio,
+                            self.parents[best_key].fitness])

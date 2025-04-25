@@ -52,6 +52,7 @@ class ROBOT:
         basePositionAndOrientation = p.getBasePositionAndOrientation(self.robotId)  
         basePosition = basePositionAndOrientation[0]  
         xPosition = basePosition[0]  
+        #xPosition = max(0, basePosition[0])
 
         movement_ratio = movingTimesteps / c.ITERATIONS
         #combined_fitness = xPosition * movement_ratio
@@ -63,13 +64,14 @@ class ROBOT:
         elif c.fitnessVariants == 2:
             combined_fitness = xPosition * (movement_ratio ** 2)
         elif c.fitnessVariants == 3:
-            combined_fitness = 0.5 * xPosition + 0.5 * movement_ratio
+            combined_fitness = 0.5 * xPosition - 0.5 * movement_ratio
         elif c.fitnessVariants == 4:
             k = 2  #can change this constant
-            combined_fitness = xPosition - k * (1 - movement_ratio)
+            combined_fitness = xPosition + k * (1 - movement_ratio)
               
-        with open("tmp" + solutionID + ".txt", "w") as file:  
-            file.write(str(combined_fitness))
+        with open("tmp" + solutionID + ".txt", "w") as file:
+            file.write(f"{xPosition},{movement_ratio},{combined_fitness}")
+
         
         os.rename("tmp" + str(solutionID) + ".txt" , "fitness" + str(solutionID) + ".txt")
         
